@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+ name: curl-allow-agh-egress
+spec:
+  podSelector:
+    matchLabels:
+      app: curl
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+      - ipBlock:
+          cidr: "149.156.192.0/20"
+      - ipBlock:
+          cidr: "149.156.96.0/19"
+    ports:
+    - protocol: TCP
+      port: 80
+    - protocol: TCP
+      port: 443

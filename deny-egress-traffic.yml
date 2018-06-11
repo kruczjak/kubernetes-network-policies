@@ -15,13 +15,3 @@ spec:
       protocol: UDP
     - port: 53
       protocol: TCP
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: web-deny-all
-spec:
-  podSelector:
-    matchLabels:
-      app: echoheaders
-  ingress: []
